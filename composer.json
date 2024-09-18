@@ -37,7 +37,17 @@
     }
   },
   "scripts": {
+    "fix": [
+      "@php-cs-fixer:fix",
+      "@phpcbf"
+    ],
+    "lint": [
+      "@php-cs-fixer:check",
+      "@phpcs"
+    ],
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --ansi",
-    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --ansi"
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --ansi",
+    "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
+    "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs"
   }
 }
