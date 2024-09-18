@@ -35,5 +35,9 @@
       "forward-command": true,
       "target-directory": "vendor-bin"
     }
+  },
+  "scripts": {
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --ansi",
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --ansi"
   }
 }
