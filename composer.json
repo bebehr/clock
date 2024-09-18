@@ -1,0 +1,26 @@
+{
+  "name": "bebehr/clock",
+  "description": "A simple PSR-20 implementation for reading date and time from the system clock.",
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+    "psr/clock": "^1.0"
+  },
+  "provide": {
+    "psr/clock-implementation": "1.0.0"
+  },
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Bebehr\\Clock\\": "src/"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "8.1.0"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
