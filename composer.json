@@ -40,7 +40,8 @@
   "scripts": {
     "fix": [
       "@php-cs-fixer:fix",
-      "@phpcbf"
+      "@phpcbf",
+      "@phplint"
     ],
     "lint": [
       "@php-cs-fixer:check",
@@ -48,7 +49,14 @@
     ],
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
-    "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
-    "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs"
+    "phpcbf": [
+      "@phplint",
+      "vendor-bin/phpcs/vendor/bin/phpcbf"
+    ],
+    "phpcs": [
+      "@phplint",
+      "vendor-bin/phpcs/vendor/bin/phpcs"
+    ],
+    "phplint": "vendor-bin/phplint/vendor/bin/phplint -n --no-progress --ansi"
   }
 }

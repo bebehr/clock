@@ -1,0 +1,10 @@
+path: .
+exclude:
+  - var
+  - vendor
+  - vendor-bin
+extensions:
+  - php
+warning: true
+jobs: 10
+cache: var/cache/.phplint.cache
