@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+
+$finder = (new Finder())
+    ->in(__DIR__)
+    ->exclude(['var', 'vendor', 'vendor-bin'])
+    ->ignoreDotFiles(false)
+    ->ignoreVCSIgnored(true)
+;
+$cacheFile = __DIR__ . '/var/cache/php-cs-fixer.cache';
 
 return (new Config())
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PHP80Migration:risky' => true,
@@ -16,12 +26,6 @@ return (new Config())
         'concat_space' => false,
         'yoda_style' => false,
     ])
-    ->setFinder(
-        (new Finder())
-            ->ignoreDotFiles(false)
-            ->ignoreVCSIgnored(true)
-            ->exclude(['var', 'vendor', 'vendor-bin'])
-            ->in(__DIR__)
-    )
-    ->setCacheFile(__DIR__ . '/var/cache/php-cs-fixer.cache')
+    ->setFinder($finder)
+    ->setCacheFile($cacheFile)
 ;

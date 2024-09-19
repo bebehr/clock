@@ -46,8 +46,8 @@
       "@php-cs-fixer:check",
       "@phpcs"
     ],
-    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --ansi",
-    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --ansi",
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs"
   }
