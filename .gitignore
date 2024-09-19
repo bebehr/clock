@@ -3,3 +3,5 @@ composer.lock
 /vendor-bin/**/vendor/
 /.php-cs-fixer.php
 /.phpcs.xml
+/phpcs.xml
+/phpcs.xml.dist
