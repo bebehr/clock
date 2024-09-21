@@ -67,9 +67,6 @@
       "@php-cs-fixer",
       "@phpcs"
     ],
-    "test": [
-      "@phpunit"
-    ],
     "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
@@ -77,8 +74,12 @@
     "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights -n -v --ansi",
     "phpinsights:fix": "vendor-bin/phpinsights/vendor/bin/phpinsights -s -n --fix --ansi",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint -n --no-progress --ansi",
+    "phploc": "vendor-bin/phploc/vendor/bin/phploc --log-json var/log/phploc.json src",
     "phpmd": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --cache --cache-file=var/cache/.phpmd.result-cache.php --color",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi",
-    "phpunit": "vendor/bin/phpunit"
+    "phpunit": "vendor/bin/phpunit",
+    "test": [
+      "@phpunit"
+    ]
   }
 }
