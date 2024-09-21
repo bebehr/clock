@@ -1,0 +1,17 @@
+{
+  "composer": true,
+  "includes": [
+    "src"
+  ],
+  "extensions": [
+    "php"
+  ],
+  "report": {
+    "html": "var/reports/phpmetrics"
+  },
+  "plugins": {
+    "junit": {
+      "file": "var/log/phpunit.junit.xml"
+    }
+  }
+}

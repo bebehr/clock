@@ -31,6 +31,6 @@
   </coverage>
 
   <logging>
-    <junit outputFile="var/log/phpunit/junit.xml"/>
+    <junit outputFile="var/log/phpunit.junit.xml"/>
   </logging>
 </phpunit>

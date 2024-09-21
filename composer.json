@@ -51,8 +51,12 @@
     ],
     "check": [
       "@lint",
-      "@analyse",
-      "@test"
+      "@analyse"
+    ],
+    "ci": [
+      "@check",
+      "@test",
+      "@metrics"
     ],
     "fix": [
       "@php-cs-fixer:fix",
@@ -67,6 +71,11 @@
       "@php-cs-fixer",
       "@phpcs"
     ],
+    "metrics": [
+      "@phploc",
+      "@pdepend",
+      "@phpmetrics"
+    ],
     "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/log/pdepend.summary.xml --jdepend-chart=var/log/pdepend.chart.svg --overview-pyramid=var/log/pdepend.pyramid.svg src",
     "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
@@ -77,6 +86,7 @@
     "phplint": "vendor-bin/phplint/vendor/bin/phplint -n --no-progress --ansi",
     "phploc": "vendor-bin/phploc/vendor/bin/phploc --log-json var/log/phploc.json src",
     "phpmd": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --cache --cache-file=var/cache/.phpmd.result-cache.php --color",
+    "phpmetrics": "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi",
     "phpunit": "vendor/bin/phpunit",
     "test": [
