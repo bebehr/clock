@@ -67,6 +67,7 @@
       "@php-cs-fixer",
       "@phpcs"
     ],
+    "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/log/pdepend.summary.xml --jdepend-chart=var/log/pdepend.chart.svg --overview-pyramid=var/log/pdepend.pyramid.svg src",
     "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
