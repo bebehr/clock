@@ -9,6 +9,7 @@
   },
   "require-dev": {
     "bamarni/composer-bin-plugin": "^1.8",
+    "phpunit/phpunit": "^10.5",
     "symfony/var-dumper": "^6.4"
   },
   "provide": {
@@ -18,6 +19,11 @@
   "autoload": {
     "psr-4": {
       "Bebehr\\Clock\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bebehr\\Clock\\Tests\\": "tests/"
     }
   },
   "config": {
@@ -45,7 +51,8 @@
     ],
     "check": [
       "@lint",
-      "@analyse"
+      "@analyse",
+      "@test"
     ],
     "fix": [
       "@php-cs-fixer:fix",
@@ -60,6 +67,9 @@
       "@php-cs-fixer",
       "@phpcs"
     ],
+    "test": [
+      "@phpunit"
+    ],
     "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -n -v --diff --show-progress=none --ansi",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -n -v --diff --show-progress=none --ansi",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
@@ -68,6 +78,7 @@
     "phpinsights:fix": "vendor-bin/phpinsights/vendor/bin/phpinsights -s -n --fix --ansi",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint -n --no-progress --ansi",
     "phpmd": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --cache --cache-file=var/cache/.phpmd.result-cache.php --color",
-    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi"
+    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi",
+    "phpunit": "vendor/bin/phpunit"
   }
 }
