@@ -1,7 +1,8 @@
-/.*               export-ignore
-/tests/           export-ignore
-/phpinsights.php  export-ignore
-/phpmd.xml        export-ignore
+/.*                 export-ignore
+/tests/             export-ignore
+/phpinsights.php    export-ignore
+/phpmd.xml          export-ignore
+/phpstan.neon.dist  export-ignore
 
 *       text=auto eol=lf
 *.json  text whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=2

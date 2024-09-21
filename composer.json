@@ -40,6 +40,7 @@
   "scripts": {
     "analyse": [
       "@phpmd",
+      "@phpstan",
       "@phpinsights"
     ],
     "check": [
@@ -66,6 +67,7 @@
     "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights -n -v --ansi",
     "phpinsights:fix": "vendor-bin/phpinsights/vendor/bin/phpinsights -s -n --fix --ansi",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint -n --no-progress --ansi",
-    "phpmd": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --cache --cache-file=var/cache/.phpmd.result-cache.php --color"
+    "phpmd": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --cache --cache-file=var/cache/.phpmd.result-cache.php --color",
+    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi"
   }
 }
