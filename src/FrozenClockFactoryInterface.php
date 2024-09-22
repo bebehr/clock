@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Bebehr\Clock;
 
+use Psr\Clock\ClockInterface;
+
 interface FrozenClockFactoryInterface
 {
-    public function create(\DateTimeImmutable $now): \Psr\Clock\ClockInterface;
+    public function create(\DateTimeImmutable $now): ClockInterface;
 }

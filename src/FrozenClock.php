@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Bebehr\Clock;
 
-final class FrozenClock implements \Psr\Clock\ClockInterface
+use Psr\Clock\ClockInterface;
+
+final class FrozenClock implements ClockInterface
 {
     private \DateTimeImmutable $now;
 

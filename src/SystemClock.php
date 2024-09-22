@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Bebehr\Clock;
 
+use Psr\Clock\ClockInterface;
+
 /** @immutable */
-final class SystemClock implements \Psr\Clock\ClockInterface
+final class SystemClock implements ClockInterface
 {
     public function __construct(private readonly \DateTimeZone $timeZone)
     {
