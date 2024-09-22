@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
 use SlevomatCodingStandard\Sniffs\Classes\SuperfluousAbstractClassNamingSniff;
 use SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff;
 use SlevomatCodingStandard\Sniffs\Classes\SuperfluousInterfaceNamingSniff;
@@ -75,9 +76,11 @@ return [
     ],
 
     'config' => [
-        //  ExampleInsight::class => [
-        //      'key' => 'value',
-        //  ],
+        LineLengthSniff::class => [
+            'lineLimit' => 120,
+            'absoluteLineLimit' => 120,
+            'ignoreComments' => true,
+        ],
     ],
 
     /*
@@ -92,10 +95,10 @@ return [
     */
 
     'requirements' => [
-        //  'min-quality' => 0,
+        'min-quality' => 90.0,
         //  'min-complexity' => 0,
-        //  'min-architecture' => 0,
-        //  'min-style' => 0,
+        'min-architecture' => 85.0,
+        'min-style' => 96.0,
         //  'disable-security-check' => false,
     ],
 
