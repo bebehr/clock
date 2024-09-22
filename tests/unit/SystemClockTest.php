@@ -26,23 +26,7 @@ final class SystemClockTest extends TestCase
     {
         $clock = $this->clock;
 
-        $this->assertInstanceOf(SystemClock::class, $clock);
-    }
-
-    public function testClockImplementsClockInterface(): void
-    {
-        $clock = $this->clock;
-
-        $this->assertInstanceOf(ClockInterface::class, $clock);
-    }
-
-    public function testNowReturnsDateTimeimmutable(): void
-    {
-        $clock = $this->clock;
-
-        $now = $clock->now();
-
-        $this->assertInstanceOf(\DateTimeImmutable::class, $now);
+        self::assertInstanceOf(SystemClock::class, $clock);
     }
 
     public function testNowReturnsFreshDateTimeimmutable(): void
@@ -53,7 +37,7 @@ final class SystemClockTest extends TestCase
         $now[] = $clock->now();
         $now[] = $clock->now();
 
-        $this->assertNotSame($now[1], $now[0]);
+        self::assertNotSame($now[1], $now[0]);
     }
 
     public function testNowReturnsCurrentDateTime(): void
@@ -65,8 +49,8 @@ final class SystemClockTest extends TestCase
         $now = $clock->now();
         $after = new \DateTimeImmutable('now', $timeZone);
 
-        $this->assertGreaterThanOrEqual($before, $now);
-        $this->assertLessThanOrEqual($after, $now);
+        self::assertGreaterThanOrEqual($before, $now);
+        self::assertLessThanOrEqual($after, $now);
     }
 
     public function testNowReturnsGreaterDateTimeAfterSecond(): void
@@ -79,7 +63,7 @@ final class SystemClockTest extends TestCase
         sleep(1);
         $after = $clock->now();
 
-        $this->assertGreaterThan($before, $now);
-        $this->assertLessThan($after, $now);
+        self::assertGreaterThan($before, $now);
+        self::assertLessThan($after, $now);
     }
 }

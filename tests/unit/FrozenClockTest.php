@@ -28,14 +28,7 @@ final class FrozenClockTest extends TestCase
     {
         $clock = $this->clock;
 
-        $this->assertInstanceOf(FrozenClock::class, $clock);
-    }
-
-    public function testClockImplementsClockInterface(): void
-    {
-        $clock = $this->clock;
-
-        $this->assertInstanceOf(ClockInterface::class, $clock);
+        self::assertInstanceOf(FrozenClock::class, $clock);
     }
 
     public function testDateTimeInjection(): void
@@ -43,21 +36,9 @@ final class FrozenClockTest extends TestCase
         $now = $this->now;
 
         $clock = new FrozenClock($now);
-        $nowReflection = (new \ReflectionClass($clock))
-            ->getProperty('now')
-        ;
-        $privateNow = $nowReflection->getValue($clock);
+        $privateNow = $this->getPropertyNowReflection($clock);
 
-        $this->assertSame($now, $privateNow);
-    }
-
-    public function testNowReturnsDateTimeimmutable(): void
-    {
-        $clock = $this->clock;
-
-        $now = $clock->now();
-
-        $this->assertInstanceOf(\DateTimeImmutable::class, $now);
+        self::assertSame($now, $privateNow);
     }
 
     public function testNowReturnsFreshDateTimeimmutable(): void
@@ -68,20 +49,28 @@ final class FrozenClockTest extends TestCase
         $now[] = $clock->now();
         $now[] = $clock->now();
 
-        $this->assertNotSame($now[1], $now[0]);
+        self::assertNotSame($now[1], $now[0]);
     }
 
     public function testNowReturnsNowProperty(): void
     {
         $clock = $this->clock;
-        $nowReflection = (new \ReflectionClass($clock))
-            ->getProperty('now')
-        ;
-        $privateNow = $nowReflection->getValue($clock);
+        $privateNow = $this->getPropertyNowReflection($clock);
 
         sleep(1);
         $now = $clock->now();
 
-        $this->assertEquals($privateNow, $now);
+        self::assertEquals($privateNow, $now);
+    }
+
+    private function getPropertyNowReflection(ClockInterface $clock): \DateTimeImmutable
+    {
+        $nowReflection = (new \ReflectionClass($clock))
+            ->getProperty('now')
+        ;
+        $privateNow = $nowReflection->getValue($clock);
+        \assert($privateNow instanceof \DateTimeImmutable);
+
+        return $privateNow;
     }
 }
