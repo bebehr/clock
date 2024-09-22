@@ -8,5 +8,5 @@ use Psr\Clock\ClockInterface;
 
 interface FrozenClockFactoryInterface
 {
-    public function create(\DateTimeImmutable $now): ClockInterface;
+    public function create(?\DateTimeImmutable $now = null): ClockInterface;
 }

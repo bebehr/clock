@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @covers \Bebehr\Clock\SystemClockFactory
  *
  * @uses \Bebehr\Clock\SystemClock
+ * @uses \Bebehr\Clock\Helpers\TimeZoneHelper
  */
 final class SystemClockFactoryTest extends TestCase
 {
@@ -36,6 +37,24 @@ final class SystemClockFactoryTest extends TestCase
         $timeZone = new \DateTimeZone('Europe/Berlin');
 
         $clock = $factory->create($timeZone);
+
+        self::assertInstanceOf(SystemClock::class, $clock);
+    }
+
+    public function testCanCreateSystemClockUsingDefault(): void
+    {
+        $factory = $this->factory;
+
+        $clock = $factory->create();
+
+        self::assertInstanceOf(SystemClock::class, $clock);
+    }
+
+    public function testCanCreateSystemClockUsingNull(): void
+    {
+        $factory = $this->factory;
+
+        $clock = $factory->create(null);
 
         self::assertInstanceOf(SystemClock::class, $clock);
     }

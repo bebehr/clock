@@ -13,6 +13,8 @@ use PHPUnit\Framework\TestCase;
  * @covers \Bebehr\Clock\FrozenClockFactory
  *
  * @uses \Bebehr\Clock\FrozenClock
+ * @uses \Bebehr\Clock\Helpers\DateTimeHelper
+ * @uses \Bebehr\Clock\Helpers\TimeZoneHelper
  */
 final class FrozenClockFactoryTest extends TestCase
 {
@@ -36,6 +38,24 @@ final class FrozenClockFactoryTest extends TestCase
         $now = new \DateTimeImmutable();
 
         $clock = $factory->create($now);
+
+        self::assertInstanceOf(FrozenClock::class, $clock);
+    }
+
+    public function testCanCreateSystemClockUsingDefault(): void
+    {
+        $factory = $this->factory;
+
+        $clock = $factory->create();
+
+        self::assertInstanceOf(FrozenClock::class, $clock);
+    }
+
+    public function testCanCreateSystemClockUsingNull(): void
+    {
+        $factory = $this->factory;
+
+        $clock = $factory->create(null);
 
         self::assertInstanceOf(FrozenClock::class, $clock);
     }
