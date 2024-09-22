@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousAbstractClassNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousInterfaceNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousTraitNamingSniff;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +68,10 @@ return [
     ],
 
     'remove' => [
-        //  ExampleInsight::class,
+        SuperfluousAbstractClassNamingSniff::class,
+        SuperfluousExceptionNamingSniff::class,
+        SuperfluousInterfaceNamingSniff::class,
+        SuperfluousTraitNamingSniff::class,
     ],
 
     'config' => [
