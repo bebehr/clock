@@ -5,6 +5,7 @@
 /phpmetrics.json    export-ignore
 /phpstan.neon.dist  export-ignore
 /phpunit.xml.dist   export-ignore
+/psalm.xml.dist     export-ignore
 
 *       text=auto eol=lf
 *.json  text whitespace=blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent,tabwidth=2

@@ -8,3 +8,4 @@ composer.lock
 /phpstan.dist.neon
 /phpstan.neon
 /phpunit.xml
+/psalm.xml

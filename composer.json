@@ -47,7 +47,9 @@
     "analyse": [
       "@phpmd",
       "@phpstan",
-      "@phpinsights"
+      "@phpinsights",
+      "@psalm",
+      "@psalm:taint"
     ],
     "check": [
       "@lint",
@@ -89,6 +91,8 @@
     "phpmetrics": "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi",
     "phpunit": "vendor/bin/phpunit",
+    "psalm": "vendor-bin/psalm/vendor/bin/psalm --no-progress --no-cache",
+    "psalm:taint": "vendor-bin/psalm/vendor/bin/psalm --taint-analysis --no-progress --no-cache",
     "test": [
       "@phpunit"
     ]
