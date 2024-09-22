@@ -13,16 +13,16 @@ composer require bebehr/clock
 ### Using the SystemClock
 
 ```
-use Bebehr\Clock\SystemClockFactory;
+use Bebehr\Clock\ClockFactory;
 
 // Create a clock
-$clock = (new SystemClockFactory())->create(
+$clock = (new ClockFactory())->create(
   new DateTimeZone('Europe/Berlin'),
 );
 // or even more simple, using the system default timezone:
-// $clock = (new SystemClockFactory())->create();
+// $clock = (new ClockFactory())->create();
 
-// $clock->now() ALWAYS returns a fresh DateTimeImmutable
+// now() always returns a fresh DateTimeImmutable
 $dateTime  = $clock->now();
 $timeStamp = $clock->now()->getTimestamp();
 $timeZone  = $clock->now()->getTimezone();
@@ -31,17 +31,17 @@ $timeZone  = $clock->now()->getTimezone();
 ### Using a FrozenClock
 
 ```
-use Bebehr\Clock\FrozenClockFactory;
+use Bebehr\Clock\ClockFactory;
 
 // Create a clock
-$mockClock = (new FrozenClockFactory())->create(
+$mockClock = (new ClockFactory())->createFrozenClock(
   new DateTimeImmutable(
     '2000-01-01',
     new DateTimeZone('Australia/Sydney'),
   )
 );
 
-// $clock->now() always returns an equal DateTimeImmutable
+// now() always returns an equal DateTimeImmutable
 $mockDateTime  = $mockClock->now();
 $mockTimeStamp = $mockClock->now()->getTimestamp();
 $mockTimeZone  = $mockClock->now()->getTimezone();
@@ -50,13 +50,13 @@ $mockTimeZone  = $mockClock->now()->getTimezone();
 ### Freezing the SystemClock
 
 ```
-use Bebehr\Clock\FrozenClockFactory;
-use Bebehr\Clock\SystemClockFactory;
+use Bebehr\Clock\ClockFactory;
 
-$frozenClock = (new SystemClockFactory())->create()->freeze();
+$frozenClock = (new ClockFactory())->create()->freeze();
 
-// This is the same as:
-$frozenClock = (new FrozenClockFactory())->create(
-  (new SystemClockFactory())->create(),
+// Is the same as:
+
+$frozenClock = (new ClockFactory())->createFrozenClock(
+  (new ClockFactory())->create(),
 );
 ```
