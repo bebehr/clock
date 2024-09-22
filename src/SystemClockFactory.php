@@ -6,8 +6,8 @@ namespace Bebehr\Clock;
 
 final class SystemClockFactory implements SystemClockFactoryInterface
 {
-    public function create(): \Psr\Clock\ClockInterface
+    public function create(\DateTimeZone $timeZone): \Psr\Clock\ClockInterface
     {
-        return new SystemClock();
+        return new SystemClock($timeZone);
     }
 }

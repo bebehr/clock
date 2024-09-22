@@ -6,5 +6,5 @@ namespace Bebehr\Clock;
 
 interface SystemClockFactoryInterface
 {
-    public function create(): \Psr\Clock\ClockInterface;
+    public function create(\DateTimeZone $timeZone): \Psr\Clock\ClockInterface;
 }

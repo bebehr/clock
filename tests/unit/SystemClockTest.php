@@ -19,7 +19,7 @@ final class SystemClockTest extends TestCase
     protected function setUp(): void
     {
         $this->timeZone = new \DateTimeZone('Europe/Berlin');
-        $this->clock = new SystemClock();
+        $this->clock = new SystemClock($this->timeZone);
     }
 
     public function testClockIsInstanceOfSystemClock(): void
@@ -27,6 +27,16 @@ final class SystemClockTest extends TestCase
         $clock = $this->clock;
 
         self::assertInstanceOf(SystemClock::class, $clock);
+    }
+
+    public function testTimeZoneInjection(): void
+    {
+        $timeZone = new \DateTimeZone('Europe/London');
+
+        $clock = new SystemClock($timeZone);
+        $privateTimeZone = $this->getPropertyTimeZoneReflection($clock);
+
+        self::assertSame($timeZone, $privateTimeZone);
     }
 
     public function testNowReturnsFreshDateTimeimmutable(): void
@@ -65,5 +75,26 @@ final class SystemClockTest extends TestCase
 
         self::assertGreaterThan($before, $now);
         self::assertLessThan($after, $now);
+    }
+
+    public function testNowReturnsTimeZoneProperty(): void
+    {
+        $clock = new SystemClock($this->timeZone);
+        $privateTimeZone = $this->getPropertyTimeZoneReflection($clock);
+
+        $timeZone = $clock->now()->getTimezone();
+
+        self::assertEquals($privateTimeZone, $timeZone);
+    }
+
+    private function getPropertyTimeZoneReflection(ClockInterface $clock): \DateTimeZone
+    {
+        $timeZoneReflection = (new \ReflectionClass($clock))
+            ->getProperty('timeZone')
+        ;
+        $privateTimeZone = $timeZoneReflection->getValue($clock);
+        \assert($privateTimeZone instanceof \DateTimeZone);
+
+        return $privateTimeZone;
     }
 }
