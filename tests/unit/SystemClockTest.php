@@ -10,23 +10,18 @@ use Psr\Clock\ClockInterface;
 
 /**
  * @covers \Bebehr\Clock\SystemClock
+ *
+ * @uses \Bebehr\Clock\FrozenClock
  */
 final class SystemClockTest extends TestCase
 {
     private \DateTimeZone $timeZone;
-    private ClockInterface $clock;
+    private SystemClock $clock;
 
     protected function setUp(): void
     {
         $this->timeZone = new \DateTimeZone('Europe/Berlin');
         $this->clock = new SystemClock($this->timeZone);
-    }
-
-    public function testClockIsInstanceOfSystemClock(): void
-    {
-        $clock = $this->clock;
-
-        self::assertInstanceOf(SystemClock::class, $clock);
     }
 
     public function testTimeZoneInjection(): void
@@ -85,6 +80,19 @@ final class SystemClockTest extends TestCase
         $timeZone = $clock->now()->getTimezone();
 
         self::assertEquals($privateTimeZone, $timeZone);
+    }
+
+    public function testFreezeInitializesFrozenClockWithCurrentDateTime(): void
+    {
+        $timeZone = $this->timeZone;
+        $clock = $this->clock;
+
+        $before = new \DateTimeImmutable('now', $timeZone);
+        $now = $clock->freeze()->now();
+        $after = new \DateTimeImmutable('now', $timeZone);
+
+        self::assertGreaterThanOrEqual($before, $now);
+        self::assertLessThanOrEqual($after, $now);
     }
 
     private function getPropertyTimeZoneReflection(ClockInterface $clock): \DateTimeZone

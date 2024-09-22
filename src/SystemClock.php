@@ -15,4 +15,9 @@ final class SystemClock implements \Psr\Clock\ClockInterface
     {
         return new \DateTimeImmutable('now', $this->timeZone);
     }
+
+    public function freeze(): FrozenClock
+    {
+        return new FrozenClock($this->now());
+    }
 }
